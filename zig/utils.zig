@@ -6,8 +6,8 @@ pub fn read(buf: []u8) !usize {
     return try reader.readAll(buf);
 }
 
-pub fn lines(buf: []const u8) std.mem.TokenIterator(u8, .any) {
-    return std.mem.tokenizeAny(u8, buf, "\n\r");
+pub fn lines(buf: []const u8) std.mem.SplitIterator(u8, .sequence) {
+    return std.mem.splitSequence(u8, buf, "\r\n");
 }
 
 pub fn is_digit(c: u8) bool {
